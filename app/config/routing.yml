@@ -19,3 +19,6 @@ users:
 auth-tokens:
     type:     rest
     resource: AppBundle\Controller\AuthTokenController
+nelmio-api-doc:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /documentation

@@ -10,15 +10,20 @@ use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les anno
 use AppBundle\Entity\Place;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class PlaceController extends Controller
 {
     /**
+     * @ApiDoc(
+     *    description="RÃ©cupÃ¨re la liste des lieux de l'application",
+     *    output= { "class"=Place::class, "collection"=true, "groups"={"place"} }
+     * )
      * @Rest\View()
      * @Rest\Get("/places")
-     * @QueryParam(name="offset", requirements="\d+", default="", description="Index de début de la pagination")
+     * @QueryParam(name="offset", requirements="\d+", default="", description="Index de dÃ©but de la pagination")
      * @QueryParam(name="limit", requirements="\d+", default="", description="Index de fin de la pagination")
-     * @QueryParam(name="sort", requirements="(asc|desc)", nullable=true, description="Ordre de tri (basé sur le nom)")
+     * @QueryParam(name="sort", requirements="(asc|desc)", nullable=true, description="Ordre de tri (basÃ© sur le nom)")
      */
     public function getPlacesAction(Request $request, ParamFetcher $paramFetcher)
     {
@@ -55,7 +60,7 @@ class PlaceController extends Controller
     {
         $place = $this->get('doctrine.orm.entity_manager')
             ->getRepository('AppBundle:Place')
-            ->find($request->get('id')); // L'identifiant en tant que paramétre n'est plus nécessaire
+            ->find($request->get('id')); // L'identifiant en tant que paramÃ©tre n'est plus nÃ©cessaire
         /* @var $place Place */
 
         if (empty($place)) {
@@ -74,7 +79,7 @@ class PlaceController extends Controller
         $place = new Place();
         $form = $this->createForm(PlaceType::class, $place);
 
-        $form->submit($request->request->all()); // Validation des données
+        $form->submit($request->request->all()); // Validation des donnÃ©es
 
         if ($form->isValid()) {
             $em = $this->get('doctrine.orm.entity_manager');
@@ -129,7 +134,7 @@ class PlaceController extends Controller
     {
         $place = $this->get('doctrine.orm.entity_manager')
             ->getRepository('AppBundle:Place')
-            ->find($request->get('id')); // L'identifiant en tant que paramètre n'est plus nécessaire
+            ->find($request->get('id')); // L'identifiant en tant que paramÃ¨tre n'est plus nÃ©cessaire
         /* @var $place Place */
 
         if (empty($place)) {
@@ -138,8 +143,8 @@ class PlaceController extends Controller
 
         $form = $this->createForm(PlaceType::class, $place);
 
-        // Le paramètre false dit à Symfony de garder les valeurs dans notre
-        // entité si l'utilisateur n'en fournit pas une dans sa requête
+        // Le paramÃ¨tre false dit Ã  Symfony de garder les valeurs dans notre
+        // entitÃ© si l'utilisateur n'en fournit pas une dans sa requÃªte
         $form->submit($request->request->all(), $clearMissing);
 
         if ($form->isValid()) {
