@@ -13,7 +13,7 @@ use AppBundle\Entity\Credentials;
 class AuthTokenController extends Controller
 {
     /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"auth-token"})
      * @Rest\Post("/auth-tokens")
      */
     public function postAuthTokensAction(Request $request)

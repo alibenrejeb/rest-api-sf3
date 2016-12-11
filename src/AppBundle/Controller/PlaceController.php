@@ -19,7 +19,7 @@ class PlaceController extends Controller
      *    description="Récupère la liste des lieux de l'application",
      *    output= { "class"=Place::class, "collection"=true, "groups"={"place"} }
      * )
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"place"})
      * @Rest\Get("/places")
      * @QueryParam(name="offset", requirements="\d+", default="", description="Index de début de la pagination")
      * @QueryParam(name="limit", requirements="\d+", default="", description="Index de fin de la pagination")
@@ -53,7 +53,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"place"})
      * @Rest\Get("/places/{id}")
      */
     public function getPlaceAction(Request $request)
@@ -71,7 +71,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"place"})
      * @Rest\Post("/places")
      */
     public function postPlacesAction(Request $request)
@@ -96,7 +96,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT, serializerGroups={"place"})
      * @Rest\Delete("/places/{id}")
      */
     public function removePlaceAction(Request $request)
@@ -113,7 +113,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"place"})
      * @Rest\Put("/places/{id}")
      */
     public function updatePlaceAction(Request $request)
@@ -122,7 +122,7 @@ class PlaceController extends Controller
     }
 
     /**
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"place"})
      * @Rest\Patch("/places/{id}")
      */
     public function patchPlaceAction(Request $request)

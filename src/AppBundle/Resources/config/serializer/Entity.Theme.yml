@@ -1,0 +1,11 @@
+AppBundle\Entity\Theme:
+    exclusion_policy: none
+    properties:
+        id:
+            groups: ['place', 'theme']
+        name:
+            groups: ['place', 'theme']
+        value:
+            groups: ['place', 'theme']
+        place:
+            groups: ['theme']
