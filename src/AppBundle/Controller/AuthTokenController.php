@@ -7,12 +7,26 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
 use AppBundle\Form\Type\CredentialsType;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use AppBundle\Entity\AuthToken;
 use AppBundle\Entity\Credentials;
 
 class AuthTokenController extends Controller
 {
     /**
+     * @ApiDoc(
+     *    description="Crée un token d'authentification",
+     *    input={ "class" = CredentialsType::class, "name"=""},
+     *    statusCodes = {
+     *        201 = "Création avec succès",
+     *        400 = "Formulaire invalide"
+     *    },
+     *    responseMap={
+     *         201 = {"class"=AuthToken::class, "groups"={"auth-token"}},
+     *         400 = { "class"=CredentialsType::class, "fos_rest_form_errors"=true, "name" = ""}
+     *    }
+     * )
+     *
      * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"auth-token"})
      * @Rest\Post("/auth-tokens")
      */

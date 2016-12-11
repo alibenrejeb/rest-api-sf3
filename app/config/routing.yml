@@ -1,24 +1,6 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-places:
-    type:     rest
-    resource: AppBundle\Controller\PlaceController
-prices:
-    type: rest
-    resource: AppBundle\Controller\Place\PriceController
-themes:
-    type:     rest
-    resource: AppBundle\Controller\Place\ThemeController
-preferences:
-    type:     rest
-    resource: AppBundle\Controller\User\PreferenceController
-users:
-    type:     rest
-    resource: AppBundle\Controller\UserController
-auth-tokens:
-    type:     rest
-    resource: AppBundle\Controller\AuthTokenController
 nelmio-api-doc:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /documentation

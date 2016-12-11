@@ -71,6 +71,19 @@ class PlaceController extends Controller
     }
 
     /**
+     * @ApiDoc(
+     *    description="Crée un lieu dans l'application",
+     *    input={"class"=PlaceType::class, "name"=""},
+     *    statusCodes = {
+     *        201 = "Création avec succès",
+     *        400 = "Formulaire invalide"
+     *    },
+     *    responseMap={
+     *         201 = {"class"=Place::class, "groups"={"place"}},
+     *         400 = { "class"=PlaceType::class, "fos_rest_form_errors"=true, "name" = ""}
+     *    }
+     * )
+     *
      * @Rest\View(statusCode=Response::HTTP_CREATED, serializerGroups={"place"})
      * @Rest\Post("/places")
      */

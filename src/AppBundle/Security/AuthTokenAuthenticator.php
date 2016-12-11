@@ -67,6 +67,7 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
         }
 
         $user = $authToken->getUser();
+
         $pre = new PreAuthenticatedToken(
             $user,
             $authTokenHeader,
